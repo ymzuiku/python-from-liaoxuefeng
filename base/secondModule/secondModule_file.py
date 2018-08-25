@@ -1,0 +1,2 @@
+def testSecondModuleFunc():
+    print('testSecondModuleFunc')
