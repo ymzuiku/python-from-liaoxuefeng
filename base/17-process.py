@@ -1,4 +1,8 @@
+# 多进程
 import os
+import time
+import random
+from multiprocessing import Process
 
 # 进程id
 print(os.getpid())
@@ -15,11 +19,15 @@ else:
 
 
 # 包含windows的跨平台
-from multiprocessing import process
-
-
 def run_process(name):
     print('child process %s %s %s' % (name, os.getpid(), os.getppid()))
 
+
 if __name__ == '__main__':
-    p = process()
+    p = Process(target=run_process, args=('test',))
+    p.start() # 启动进程
+    print('aa')
+    p.join() # 等待异步结束在执行后面的代码, 相当于 await
+    print('bb')
+
+
